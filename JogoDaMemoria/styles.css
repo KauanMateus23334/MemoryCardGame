@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1f1d25;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 90vw;
+    max-height: 50vw;
+    padding: 2vw;
+}
+
+.card {
+    width: 20vw; /* Largura da carta como 20% da largura da viewport */
+    height: 25vh; /* Altura da carta como 25% da altura da viewport */
+    margin: 1vw; /* Margem entre as cartas como 1% da largura da viewport */
+    position: relative;
+    cursor: pointer;
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card .card-inner {
+    width: 75%;
+    height: 100%;
+    transition: transform 0.5s;
+    transform-style: preserve-3d; /* Mantém a perspectiva ao transformar */
+}
+
+.card .card-front{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        backface-visibility: hidden; /* Esconde a face traseira */
+        border-radius: 8px;
+        background-color: rgb(51, 41, 65);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.card .card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backface-visibility: hidden; /* Esconde a face traseira */
+    border-radius: 8px;
+    background-color: rgb(0, 0, 0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow:auto;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+}
+
+.card .card-back {
+    transform: rotateY(180deg); /* Inicialmente esconde a face traseira */
+}
+
+.card.flipped .card-inner {
+    transform: rotateY(180deg); /* Efeito de virar a carta ao adicionar a classe 'flipped' */
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* ou 'cover' dependendo do efeito desejado */
+    object-position: center;
+    position:absolute; 
+    border-radius: 8px;
+
+}
